@@ -1,0 +1,56 @@
+{% extends "boutique/base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <form action="" class=" card card-ms">
+            <div class="card-body row no-gutters align-items-center">
+                <div class="col">
+                    <input type="search" class="form-control borderless" name="item-name" placeholder="Entrez le nom du produit que vous cherchez">
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-success">Recherche</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    {% for prod in products %}
+    <div class="col-md-3">
+        <div class="card">
+            <img src="{{ prod.image }}" alt="" class="card-ing-top">
+            <div class="card-body">
+                <div class="card-tittle">{{ prod.title }}</div>
+                <div style="color:orange" class="card-text">$ {{ prod.price }}</div>
+                <a href="{{prod.id }}" class="btn btn-warning">Voire</a>
+                <button class="btn btn-success">Ajouter</button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+<!--===========Pagination===========-->
+<div class="row mt-3">
+    <div class="col-md-3 offset-md-4">
+        <ul class="pagination">
+            {% if products.has_previous %}
+            <li class="page-item">
+                <a href="?page={{products.previous_page_number}}" class="page-link">Précedent</a>
+            </li>
+            {% endif %}
+            <li class="page-item active">
+                <a href="?page={{products.number}}" class="page-link">{{products.number}}</a>
+            </li>
+
+            {% if products.has_next %}
+            <li class="page-item">
+                <a href="?page={{products.next_page_number}}" class="page-link">Suivant</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

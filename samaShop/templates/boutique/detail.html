@@ -1,0 +1,26 @@
+{% extends "boutique/base.html" %}
+{% block content %}
+
+<!-- ....Détail d'un produit....-->
+<div class="row">
+    <div class="col-md-6">
+        <div class="">
+            <img src="{{ product.image }}" alt="">
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="text-warning display-3">
+            {{ product.title}}
+        </div>
+        <div class="text-danger">
+            {{ product.price}}
+        </div>
+        <div class="text-warning display-3">
+            {{ product.description}}
+        </div>
+        <a href="#"><button class="btn btn-success">Acheter</button></a>
+    </div>
+</div>
+
+{% endblock %}
